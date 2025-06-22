@@ -1,0 +1,372 @@
+/* ------------------------------------- */
+/* 1. CSS Variables (Custom Properties)  */
+/* ------------------------------------- */
+
+:root {
+  --color-primary-bg: #1a1a1a; /* Dark background */
+  --color-secondary-bg: #2a2a2a; /* Slightly lighter dark for cards etc. */
+  --color-text-light: #f5f5f5; /* Light text on dark background */
+  --color-accent: #61dafb; /* A common React-like blue for accents */
+  --color-border: #444;
+
+  --font-family-main: "Helvetica Neue", Arial, sans-serif;
+  --font-size-base: 16px;
+  --font-size-lg: 1.25rem; /* 20px */
+  --font-size-xl: 1.5rem;  /* 24px */
+  --font-size-xxl: 2rem;   /* 32px */
+
+  --spacing-xs: 0.5rem; /* 8px */
+  --spacing-sm: 1rem;   /* 16px */
+  --spacing-md: 1.5rem; /* 24px */
+  --spacing-lg: 2rem;   /* 32px */
+  --spacing-xl: 3rem;   /* 48px */
+
+  --border-radius-sm: 5px;
+  --border-radius-md: 10px;
+  --transition-speed: 0.3s ease;
+}
+
+/* ------------------------------------- */
+/* 2. Base Styles & General Reset      */
+/* ------------------------------------- */
+
+* {
+  box-sizing: border-box; /* Crucial for responsive layouts (padding/border included in width) */
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth; /* Smooth scrolling for internal links */
+  font-size: var(--font-size-base); /* Base font size for 'rem' units */
+}
+
+body {
+  font-family: var(--font-family-main);
+  background-color: var(--color-primary-bg);
+  color: var(--color-text-light);
+  line-height: 1.6; /* Improves readability */
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+a:hover {
+  color: lighten(var(--color-accent), 10%); /* This won't work in pure CSS, need to define a slightly lighter color */
+  /* Instead, simply: */
+  filter: brightness(1.2); /* A simple way to lighten without preprocessors */
+}
+
+/* Common Section Title */
+.section-title {
+  font-size: var(--font-size-xxl);
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  padding-top: var(--spacing-lg); /* Space above the section title */
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  font-weight: bold;
+  text-align: center;
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
+  margin: var(--spacing-xs); /* Space between buttons */
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary-bg);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary-bg);
+  transform: translateY(-2px);
+}
+
+/* ------------------------------------- */
+/* 3. Layout: App Container            */
+/* ------------------------------------- */
+
+.app {
+  max-width: 1200px; /* Max width for the whole content */
+  margin: 0 auto;   /* Center the entire app container */
+  padding: 0 var(--spacing-md); /* Overall padding on sides */
+}
+
+/* ------------------------------------- */
+/* 4. Header Section                   */
+/* ------------------------------------- */
+
+.header {
+  position: sticky;
+  top: 0;
+  background-color: var(--color-primary-bg);
+  color: var(--color-text-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-md); /* Consistent padding */
+  z-index: 1000; /* Ensures header stays on top */
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-brand {
+  font-weight: bold;
+  font-size: var(--font-size-xl);
+  letter-spacing: 1px;
+  color: var(--color-accent); /* Make brand identifiable */
+  margin: 0;
+}
+
+.header-brand:hover {
+    filter: brightness(1.2);
+}
+
+.header-nav .nav-link {
+  font-size: var(--font-size-base);
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  color: var(--color-text-light);
+  margin-left: var(--spacing-md); /* Space between nav items */
+  transition: color var(--transition-speed);
+}
+
+.header-nav .nav-link:hover {
+  color: var(--color-accent);
+}
+
+/* ------------------------------------- */
+/* 5. Intro Section                    */
+/* ------------------------------------- */
+
+.intro {
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+  display: flex; /* Use flex to center the intro-content if it's wider than the content */
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-content {
+  display: flex; /* Flexbox for image and text */
+  flex-direction: column; /* Default to column for small screens */
+  align-items: center; /* Center horizontally in column mode */
+  gap: var(--spacing-lg); /* Space between image and text */
+  text-align: center; /* Center text within its own space */
+  max-width: 800px; /* Limit intro content width */
+  width: 100%; /* Take full width up to max */
+}
+
+.profile-pic {
+  width: 180px; /* Slightly larger for impact */
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--color-accent); /* More prominent border */
+  box-shadow: 0 0 15px rgba(var(--color-accent, 0.4)); /* Subtle glow */
+}
+
+.description {
+  font-size: var(--font-size-lg);
+  max-width: 700px; /* Control max width of description for readability */
+  margin: 0 auto; /* Center the paragraph if it's narrower than its container */
+}
+
+/* ------------------------------------- */
+/* 6. Projects Section                 */
+/* ------------------------------------- */
+
+.projects {
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.project-grid {
+  display: grid; /* Using CSS Grid for a more robust grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid columns */
+  gap: var(--spacing-lg); /* Space between cards */
+}
+
+.project-card {
+  background-color: var(--color-secondary-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column; /* Stack content inside card */
+  align-items: center; /* Center image and title */
+  text-align: center; /* Center text */
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.project-card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Unified style for project icons */
+.project-icon {
+  width: 6rem; /* Using rem for consistent scaling */
+  height: 6rem;
+  border-radius: var(--border-radius-sm); /* Slightly rounded corners */
+  object-fit: cover;
+  margin-bottom: var(--spacing-sm); /* Space below icon */
+}
+
+.project-card h3 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-xs);
+}
+
+.project-description {
+  font-size: var(--font-size-base);
+  margin-bottom: var(--spacing-md);
+  flex-grow: 1; /* Allows description to take up available space, pushing links to bottom */
+}
+
+.project-links {
+  margin-top: var(--spacing-sm); /* Space above buttons */
+}
+
+
+/* ------------------------------------- */
+/* 7. Contact Section                  */
+/* ------------------------------------- */
+
+.contact {
+  margin-top: var(--spacing-xl);
+  margin-bottom: calc(var(--spacing-xl) * 2); /* More space before footer */
+  text-align: center;
+}
+
+.contact-description {
+  max-width: 600px;
+  margin: 0 auto var(--spacing-lg) auto; /* Center and add bottom margin */
+  font-size: var(--font-size-lg);
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap; /* Allow links to wrap on small screens */
+  justify-content: center;
+  gap: var(--spacing-md); /* Space between contact buttons */
+}
+
+/* ------------------------------------- */
+/* 8. Footer Section                   */
+/* ------------------------------------- */
+
+.footer {
+  text-align: center;
+  background-color: var(--color-secondary-bg);
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+}
+
+/* ------------------------------------- */
+/* 9. Media Queries (Responsiveness)   */
+/* ------------------------------------- */
+
+/* For screens smaller than 768px (e.g., tablets, large phones) */
+@media (max-width: 768px) {
+  .app {
+    padding: 0 var(--spacing-sm); /* Less padding on smaller screens */
+  }
+
+  .header {
+    flex-direction: column; /* Stack header items vertically */
+    padding: var(--spacing-sm);
+  }
+
+  .header-nav {
+    margin-top: var(--spacing-sm);
+  }
+
+  .header-nav .nav-link {
+    margin: 0 var(--spacing-xs); /* Less space between nav items for tight fit */
+    font-size: var(--font-size-sm);
+  }
+
+  .section-title {
+    font-size: var(--font-size-xl); /* Smaller titles */
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .intro-content {
+    flex-direction: column; /* Ensure image and text stack */
+    text-align: center;
+  }
+
+  .profile-pic {
+    width: 140px; /* Smaller profile pic */
+    height: 140px;
+  }
+
+  .description {
+    font-size: var(--font-size-base); /* Smaller description font */
+  }
+
+  /* Grid automatically adjusts via auto-fit, but can force fewer columns */
+  .project-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust min-width for cards if needed */
+  }
+
+  .project-card {
+    padding: var(--spacing-sm); /* Less padding for cards */
+  }
+
+  .contact-links .btn {
+    width: 100%; /* Make contact buttons full width on small screens */
+    margin: var(--spacing-xs) 0; /* Stack buttons */
+  }
+}
+
+/* For screens smaller than 480px (e.g., mobile phones) */
+@media (max-width: 480px) {
+  .header-brand {
+    font-size: var(--font-size-lg);
+  }
+
+  .header-nav {
+    display: flex; /* Keep nav items in a row */
+    flex-wrap: wrap; /* Allow wrapping if too many links */
+    justify-content: center;
+  }
+
+  .header-nav .nav-link {
+    margin: var(--spacing-xs) var(--spacing-xs); /* Even spacing when wrapped */
+  }
+
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr; /* Force single column on very small screens */
+  }
+}
