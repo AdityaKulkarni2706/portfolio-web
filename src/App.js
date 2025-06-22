@@ -41,7 +41,7 @@ function App() {
             <h3>CSV Cleaner</h3>
             <p className="project-description">A Python script to clean and preprocess CSV files, handling missing values, duplicates, and inconsistent data formats.</p>
             <div className="project-links">
-                <a href="#link-to-repo" target="_blank" rel="noopener noreferrer" className="btn">GitHub Repo</a>
+                <a href="https://github.com/AdityaKulkarni2706/csv-cleaner" target="_blank" rel="noopener noreferrer" className="btn">GitHub Repo</a>
                 {/* <a href="#link-to-demo" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Live Demo</a> */}
             </div>
           </div>
@@ -52,7 +52,7 @@ function App() {
             <h3>Linear Regression from Scratch</h3>
             <p className="project-description">Implementation of a Linear Regression model using NumPy, covering gradient descent and evaluation metrics for educational purposes.</p>
             <div className="project-links">
-                <a href="#link-to-repo" target="_blank" rel="noopener noreferrer" className="btn">GitHub Repo</a>
+                <a href="https://github.com/AdityaKulkarni2706/regression-analysis" target="_blank" rel="noopener noreferrer" className="btn">GitHub Repo</a>
             </div>
           </div>
 
@@ -62,7 +62,7 @@ function App() {
             <h3>Custom Dataset Generator</h3>
             <p className="project-description">A tool to generate synthetic datasets with customizable parameters for machine learning experimentation and testing.</p>
             <div className="project-links">
-                <a href="#link-to-repo" target="_blank" rel="noopener noreferrer" className="btn">GitHub Repo</a>
+                <a href="https://github.com/AdityaKulkarni2706/dataset-gen" target="_blank" rel="noopener noreferrer" className="btn">GitHub Repo</a>
             </div>
           </div>
           {/* Add more project-card divs as needed */}
